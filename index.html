@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GRC Payroll Program</title>
+  <style>
+    body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: linear-gradient(#A7C7E7, #4A90E2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: #F9FAFB;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  transition: 0.3s;
+}
+
+.container:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); 
+}
+
+h2 {
+  text-align: center;
+  color: #2F3640; 
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 12px;
+  color: #2F3640;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 2px solid #A7C7E7;
+  outline: none;
+  font-size: 16px;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #4A90E2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #4A90E2; 
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #E74C3C; 
+  transform: translateY(-2px);
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>GRC PAYROLL PROGRAM</h2>
+    <form action="display.html" method="get">
+      <label>ID Number:</label>
+      <input type="text" name="id" required>
+
+      <label>Last Name:</label>
+      <input type="text" name="lname" required>
+
+      <label>First Name:</label>
+      <input type="text" name="fname" required>
+
+      <label>Middle Name:</label>
+      <input type="text" name="mname">
+
+      <label>Position:</label>
+      <input type="text" name="position" required>
+
+      <label>Rate:</label>
+      <input type="number" name="rate" required>
+
+      <label>Work Days:</label>
+      <input type="number" name="days" required>
+
+      <button type="submit">SUBMIT</button>
+    </form>
+  </div>
+</body>
+</html>

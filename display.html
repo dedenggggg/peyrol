@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payroll</title>
+  <style>
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: linear-gradient(#A7C7E7, #4A90E2); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: #F9FAFB; 
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  transition: 0.3s;
+}
+
+.container:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2F3640;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.info, .deductions {
+  margin-bottom: 20px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid #A7C7E7;
+  box-shadow: 0 2px 6px rgba(74, 144, 226, 0.1);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  font-size: 16px;
+  color: #2F3640;
+}
+
+.bold {
+  font-weight: 700;
+  color: #4A90E2;
+}
+
+.info:hover, .deductions:hover {
+  border-color: #4A90E2;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+  transform: translateY(-2px);
+  transition: 0.3s;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>PAYROLL PROGRAM</h2>
+    <div class="info">
+      <div class="row"><span class="bold">ID:</span> <span id="id"></span></div>
+      <div class="row"><span class="bold">NAME:</span> <span id="name"></span></div>
+      <div class="row"><span class="bold">POSITION:</span> <span id="position"></span></div>
+      <div class="row"><span class="bold">RATE:</span> <span id="rate"></span></div>
+      <div class="row"><span class="bold">DAYS:</span> <span id="days"></span></div>
+      <div class="row"><span class="bold">GROSS PAY:</span> <span id="gross"></span></div>
+    </div>
+
+    <div class="deductions">
+      <div class="bold">DEDUCTIONS</div>
+      <div class="row"><span>SSS (5%):</span> <span id="sss"></span></div>
+      <div class="row"><span>PAG-IBIG (3%):</span> <span id="pagibig"></span></div>
+      <div class="row"><span>PHILHEALTH (2%):</span> <span id="philhealth"></span></div>
+      <div class="row"><span>TAX (5%):</span> <span id="tax"></span></div>
+      <div class="row bold"><span>TOTAL DEDUCTION:</span> <span id="totalDeduction"></span></div>
+    </div>
+
+    <div class="row bold">
+      <span>NET PAY:</span> <span id="net"></span>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const lname = params.get("lname");
+    const fname = params.get("fname");
+    const mname = params.get("mname");
+    const position = params.get("position");
+    const rate = parseFloat(params.get("rate"));
+    const days = parseInt(params.get("days"));
+
+    const gross = rate * days;
+    const sss = gross * 0.05;
+    const pagibig = gross * 0.03;
+    const philhealth = gross * 0.02;
+    const tax = gross * 0.05;
+    const totalDeduction = sss + pagibig + philhealth + tax;
+    const net = gross - totalDeduction;
+
+    document.getElementById("id").textContent = id;
+    document.getElementById("name").textContent = `${lname}, ${fname} ${mname}`;
+    document.getElementById("position").textContent = position;
+    document.getElementById("rate").textContent = rate.toFixed(2);
+    document.getElementById("days").textContent = days;
+    document.getElementById("gross").textContent = gross.toFixed(2);
+    document.getElementById("sss").textContent = sss.toFixed(2);
+    document.getElementById("pagibig").textContent = pagibig.toFixed(2);
+    document.getElementById("philhealth").textContent = philhealth.toFixed(2);
+    document.getElementById("tax").textContent = tax.toFixed(2);
+    document.getElementById("totalDeduction").textContent = totalDeduction.toFixed(2);
+    document.getElementById("net").textContent = net.toFixed(2);
+  </script>
+</body>
+</html>
